@@ -1,0 +1,9 @@
+<div class="{{list_div_class}}">
+  <input type="text" class="{{search_input_class}}" (keyup.enter)="search(searchInput.value)" #searchInput>
+  <ul class="w3-ul">
+    <li *ngFor="let tweet of search_results | async">
+      <app-tweet-detail [detail]="tweet"></app-tweet-detail>
+    </li>
+  </ul>
+
+</div>
