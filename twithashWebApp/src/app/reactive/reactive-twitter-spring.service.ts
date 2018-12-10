@@ -25,9 +25,18 @@ export class ReactiveTwitterSpringService {
                 const enventSource = new EventSource(url);
                 enventSource.onmessage = (message) => {
                     const json = JSON.parse(message.data);
-                    console.log(new ITweet(json.tweetData.name, json.tweetData.text, json.tag));
-                    this.tweetSubject.next(new ITweet(json.tweetData.name, json.tweetData.text, json.tag));
-                    observer.next(new ITweet(json.tweetData.name, json.tweetData.text, json.tag));
+                    const tweetReceived = new ITweet(
+                        json.tweetID.name, json.tweetID.text, json.tag, json.userImage, json.country, json.placeFullName
+                        );
+                    console.log(
+                        tweetReceived
+                    );
+                    this.tweetSubject.next(
+                        tweetReceived
+                    );
+                    observer.next(
+                        tweetReceived
+                    );
                 };
                 enventSource.onerror = (error) => {
                     if (enventSource.readyState === 0) {
@@ -38,7 +47,7 @@ export class ReactiveTwitterSpringService {
                         observer.error('EventSource error: ' + error);
                     }
                 };
-               return () => enventSource.close();
+                return () => enventSource.close();
             }
         );
     }

@@ -1,3 +1,10 @@
-
-  tweet-detail works!
-
+<div id="modal" class="w3-modal" [ngStyle]="{display: visible}">
+  <div class="w3-modal-content">
+    <div class="w3-container" *ngIf="detail">
+      <span (click)='setInvisible()' class="w3-button w3-display-topright">&times;</span>
+      <img src='{{detail.userImage}}' style='width: 250px;' />
+      <span class='w3-large'>{{detail.id.name}} {{detail.country}} {{detail.placeFullName}}</span>
+      <p>{{detail.id.text}}</p>
+    </div>
+  </div>
+</div>
