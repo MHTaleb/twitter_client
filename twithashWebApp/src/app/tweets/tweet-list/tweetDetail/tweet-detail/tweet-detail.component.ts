@@ -16,6 +16,7 @@ export class TweetDetailComponent implements OnInit {
     setInvisible() {
         console.log('hidding');
         this.visible = 'none';
+        this.detail = undefined;
         this.cdr.detectChanges();
     }
 

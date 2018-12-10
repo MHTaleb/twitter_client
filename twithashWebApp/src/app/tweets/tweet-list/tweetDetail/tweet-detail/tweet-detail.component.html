@@ -1,10 +1,12 @@
-<div id="modal" class="w3-modal" [ngStyle]="{display: visible}">
-  <div class="w3-modal-content">
-    <div class="w3-container" *ngIf="detail">
+<div *ngIf="detail" class="w3-modal" style="text-align: center; display: inline-block">
+  <div class="w3-modal-content w3-center w3-blue-grey" style="display: inline-block; max-width: 60%;">
+    <div class="w3-container">
       <span (click)='setInvisible()' class="w3-button w3-display-topright">&times;</span>
-      <img src='{{detail.userImage}}' style='width: 250px;' />
-      <span class='w3-large'>{{detail.id.name}} {{detail.country}} {{detail.placeFullName}}</span>
-      <p>{{detail.id.text}}</p>
+      <h2>{{detail.id.name}} {{detail.country}} {{detail.placeFullName}}</h2>
+    </div>
+    <img src='{{detail.userImage}}' alt="Car" style="width:100%">
+    <div class="w3-container">
+      <span>{{detail.id.text}}</span>
     </div>
   </div>
 </div>
